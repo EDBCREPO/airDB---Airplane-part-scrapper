@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <title> AirDB </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/uikit.css">
+</head>
+
+<body class="uk-height-expand uk-background-dark uk-padding-2xsmall
+             uk-flex-column uk-flex">
+    
+    <form class="uk-flex uk-flex-between uk-gap-xsmall uk-flex-middle"
+          action="/search" method="GET" target="_self" >
+        
+        <input type="text" placeholder="Place a Part Number..." required name="value"
+               class="uk-input uk-border uk-rounded uk-width-auto" >
+        
+        <button class="uk-button uk-button-primary uk-rounded-phill uk-icon" 
+                type="submit" icon="search" >
+        </button>
+
+    </form>
+
+    <hr class="uk-margin-xsmall uk-margin-remove-horizontal uk-hr uk-hr-neutral">
+
+    <main class="uk-flex uk-flex-wrap uk-flex-column uk-child-width-1-1 uk-gap-2xsmall" 
+          style="flex-grow:1; flex-shrink:0;" >

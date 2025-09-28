@@ -1,0 +1,34 @@
+https://www.aerospacesimplified.com/partno-search?searchby=partno&searchkey=522151-8
+https://www.aerospaceexchange.com/partno-search?searchby=partno&searchkey=522151-30
+https://www.asap360unlimited.com/partno-search?searchby=partno&searchkey=522151-30
+https://www.fulfillmentbyasap.com/partno-search?searchby=partno&searchkey=305-4308
+https://www.aerospaceorbit.com/partno-search?searchby=partno&searchkey=522151-30
+https://www.iso-parts.com/Public/Search_Inventory_Results.aspx?Keyword=518373-8
+https://www.aogpurchasing.com/partno-search?searchby=partno&searchkey=522151-30
+https://www.meteoricaero.com/partno-search?searchby=partno&searchkey=3183490-1
+https://www.aerospaceaces.com/partno-search?searchby=partno&searchkey=522151-8
+https://www.asapbuying.com/partno-search?searchby=partno&searchkey=522151-30
+https://www.asapaxis.com/partno-search?searchby=partno&searchkey=522151-8
+https://www.buynsn.com/partno-search?searchby=partno&searchkey=522151-30
+https://www.afrenterprises.com/rfq/searchrfq?partno=522151-30
+https://www.aircraftspruce.com/search/search.php
+https://aerobasegroup.com/search/
+
+NO -> https://www.oceanair.aero/
+NO -> https://www.fipart.com/search?q=525891
+NO -> https://www.aerodefence.com.au/525891/sf/pl.php
+NO -> https://www.westairshop.com/product/search?search=522151-16
+NO -> https://aviationinventoryrepair.com/search?q=goodyear&options%5Bprefix%5D=last
+
+SI -> https://shop.boeing.com/aviation-supply/search?text=m-611+magna+tag
+SI -> https://www.aero-tradellc.com/products/product/view/11/1179
+SI -> https://www.wbparts.com/rfq/5365-00-619-3621.html
+SI -> https://www.partsbase.com/parts/525891.html
+
+IO -> https://www.airpowerinc.com/SearchProducts?q=522151-30
+IO -> https://www.buyaviationparts.com/rfq/searchrfq?partno=522151-30
+IO -> https://www.aviationpartsinc.com/?s=522151-8&product_cat=0&post_type=product
+
+https://www.aerodyneworldwide.com/search/1546614-1/
+
+https://www.globalair.com/directories/distributors-75.html
