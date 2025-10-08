@@ -39,7 +39,7 @@ protected:
 
     virtual void kill() const noexcept override { if( !is_std() ){
         ::shutdown(obj->fd,SHUT_RDWR); ::close( obj->fd ); 
-    } obj->state = FILE_STATE::KILL; }
+    } obj->state |= FILE_STATE::KILL; }
 
 protected:
 

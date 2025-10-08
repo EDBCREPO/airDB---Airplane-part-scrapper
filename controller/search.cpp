@@ -10,7 +10,7 @@
 #include "./scrapper/asapbuying_com.cpp"
 #include "./scrapper/aerospheres_com.cpp"
 #include "./scrapper/meteoricaero_com.cpp"
-#include "./scrapper//gracoroberts_com.cpp"
+#include "./scrapper/gracoroberts_com.cpp"
 #include "./scrapper/aogpurchasing_com.cpp"
 #include "./scrapper/aerospaceaces_com.cpp"
 #include "./scrapper/aerospaceorbit_com.cpp"
@@ -28,6 +28,7 @@ namespace controller { express_tcp_t search_controller_app() {
     app.ALL([=]( express_http_t cli ){ try {
 
         if( !cli.query.has("value") ){ throw except_t( "invalid search value" ); }
+        auto terms = regex::split( cli.query["value"], "+" );
         
         cli.header( "Transfer-Encoding", "chunked" );
         cli.header( "Content-Type", "text/html" );
@@ -67,14 +68,19 @@ namespace controller { express_tcp_t search_controller_app() {
 
             prm->then([=]( object_t data ){ 
             if( !data.has_value() ){ goto DONE; } do { string_t msg;
+            auto dson = json::stringify( data );
 
                 for( auto x: data.as<array_t<object_t>>() ){
+                if ( terms.some([=]( string_t x ){ return !regex::test( dson, x ); }) )
+                   { continue; }
 
                     msg += regex::format(R"(
                         <div class="uk-border uk-rounded uk-animation uk-padding
-                                    uk-flex uk-flex-row uk-flex-between"
+                                    uk-flex uk-flex-row uk-flex-between
+                                    uk-text-center"
                             animation="fade" >
-                        <p>${0}</p> <!-----> <p>${1}</p> 
+                        <p class="uk-width-1-8">${0}</p> 
+                        <p>${1}</p> <!-----------------> 
                         <p class="uk-width-1-2">${2}</p>
                         <a class="uk-button uk-button-success" 
                            href="${3}" > Ver </a>

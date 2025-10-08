@@ -147,8 +147,9 @@ public:
     /*─······································································─*/
 
     inline int next() noexcept {
-        if( !is_closed() ){ return -1; }
     coBegin ; onOpen.emit(); coYield(1);
+        
+        if( is_closed() )              { free(); coEnd; }
 
         if((*_read1)(&readable())==1)  { coGoto(2); }
         if(  _read1->state <= 0 )      { coGoto(2); }
@@ -179,7 +180,7 @@ public:
     /*─······································································─*/
 
     void resume() const noexcept { if(is_state(FILE_STATE::OPEN) ){ return; } set_state(FILE_STATE::OPEN ); onResume.emit(); }
-    void  close() const noexcept { if(is_closed())/*------------*/{ return; } set_state(FILE_STATE::CLOSE); onDrain .emit(); }
+    void  close() const noexcept { if(is_state(FILE_STATE::CLOSE)){ return; } set_state(FILE_STATE::CLOSE); onDrain .emit(); }
     void   stop() const noexcept { if(is_state(FILE_STATE::REUSE)){ return; } set_state(FILE_STATE::REUSE); onStop  .emit(); }
     void  flush() const noexcept { writable().flush(); readable().flush(); std_error().flush(); }
 

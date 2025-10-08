@@ -99,21 +99,21 @@ public:
     popen_t( const string_t& path, const initializer_t<string_t>& args, const initializer_t<string_t>& envs )
     : obj( new NODE() ) { if( path.empty() ){ throw except_t("invalid command"); }
         array_t<const char*> arg; array_t<const char*> env;
-        for( auto x : args ) { arg.push( x.get() ); }
+        for( auto x : args ) { arg.push( x.get() ); } /*---------------------*/
         for( auto x : envs ) { env.push( x.get() ); } _init_( path, arg, env );
     }
 
     popen_t( const string_t& path ) 
     : obj( new NODE() ) { if( path.empty() ){ throw except_t("invalid command"); }
         array_t<const char*> arg; array_t<const char*> env; auto cmd = regex::match_all( path, "[^ ]+" );
-        for( auto x: cmd ){ arg.push( x.get() ); } _init_( cmd[0], arg, env );
+        for( auto x: cmd ){ arg.push( x.get() ); } _init_( cmd[0], arg, env ); /*----------------------*/
     }
 
     popen_t( const string_t& path, const initializer_t<string_t>& args ) : obj( new NODE() ) { 
         if ( path.empty() ){ throw except_t("invalid command"); }
         array_t<const char*> arg; array_t<const char*> env;
         for( auto x : args ) { arg.push( x.get() ); }
-        _init_( path, arg, env );
+        _init_( path, arg, env ); /*---------------*/
     }
 
     popen_t() noexcept : obj( new NODE() ) {}
@@ -144,7 +144,7 @@ public:
     inline int next() noexcept {
     coBegin ; onOpen.emit(); coYield(1);
 
-        if( !is_closed() ){ free(); coNext; do { int status=0;
+        if( is_closed() ){ free(); coNext; do { int status=0;
         if( ::waitpid( obj->fd, &status, WNOHANG ) == -1 )
           { return 1; }} while(0); coEnd; }
 
@@ -176,7 +176,7 @@ public:
     /*─······································································─*/
 
     void resume() const noexcept { if(is_state(FILE_STATE::OPEN) ){ return; } set_state(FILE_STATE::OPEN ); onResume.emit(); }
-    void  close() const noexcept { if(is_closed())/*------------*/{ return; } set_state(FILE_STATE::CLOSE); onDrain .emit(); }
+    void  close() const noexcept { if(is_state(FILE_STATE::CLOSE)){ return; } set_state(FILE_STATE::CLOSE); onDrain .emit(); }
     void   stop() const noexcept { if(is_state(FILE_STATE::REUSE)){ return; } set_state(FILE_STATE::REUSE); onStop  .emit(); }
     void  flush() const noexcept { std_input().flush(); std_output().flush(); std_error().flush(); }
 

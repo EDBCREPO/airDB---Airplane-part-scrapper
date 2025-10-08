@@ -330,10 +330,10 @@ public:
     /*─······································································─*/
 
     void close() const noexcept { 
-        if( is_closed()  ){ return; } 
+        if( is_state(FILE_STATE::DISABLE) ){ return; }
         if( obj->keep==1 ){ stop(); goto DONE; }
          set_state( FILE_STATE::CLOSE ); DONE:; 
-    onDrain.emit(); }
+    onDrain.emit(); if( is_feof() ){ free(); } }
 
     /*─······································································─*/
 

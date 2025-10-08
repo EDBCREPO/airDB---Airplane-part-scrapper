@@ -18,7 +18,7 @@ using namespace nodepp;
 #include "../controller/scrapper/asapbuying_com.cpp"
 #include "../controller/scrapper/aerospheres_com.cpp"
 #include "../controller/scrapper/meteoricaero_com.cpp"
-#include "../controller/scrapper//gracoroberts_com.cpp"
+#include "../controller/scrapper/gracoroberts_com.cpp"
 #include "../controller/scrapper/aogpurchasing_com.cpp"
 #include "../controller/scrapper/aerospaceaces_com.cpp"
 #include "../controller/scrapper/aerospaceorbit_com.cpp"
@@ -61,13 +61,13 @@ void onMain() {
 
         x.then([=]( object_t data ){
 
-            console::done( "->>>>", json::stringify( data ) );
+            console::done( "->>>>", *idx );
 
         *idx -= 1; });
 
         x.fail([=]( except_t err ){
 
-            console::done( "->>>>", *idx );
+            console::error( "->>>>", *idx );
 
         *idx -= 1; });
 
